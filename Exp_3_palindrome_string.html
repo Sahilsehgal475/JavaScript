@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exp_3</title>
+    <div style="text-align:center">
+        <h2>JavaScript program to perform operations on a given string.</h2> <br>
+
+        <h2>Name:Sahil Sehgal
+            <br>Roll No:42355</h2>
+
+    </div>
+    <hr>
+</head>
+
+<body>
+    <div style="text-align:center">
+        <div>
+            string = <input type="text" id="input"><br><br>
+            <button style="background:rgb(30, 197, 226)" onclick="set_string()">Perform Operations</button>
+
+            <br><br>
+            String = <p id="string"></p>
+
+            <br><br>
+            Reverse String = <p id="reverse"></p>
+
+            <br><br>
+            Plaindrome Check = <p id="palindrome"></p>
+
+            <br><br>
+            Index position to replace character= <input type="number" id="change_index"><br>
+            Character to replace at above index position= <input type="text" id="change_char"><br><br>
+            <button style="background:pink" onclick="replace()">Replace Char</button>
+            <br>
+            <span style="color: red" id="error"></span><br>
+            updated string =><p id="updated_string"></p>
+        </div>
+
+        <script>
+            function set_string() {
+                var st = document.getElementById("input").value;
+                document.getElementById("string").innerHTML = st;
+                rev(st);
+            }
+
+            function rev(s) {
+                const arrayStrings = s.split("");
+                const reverseArray = arrayStrings.reverse();
+                const joinArray = reverseArray.join("");
+                document.getElementById("reverse").innerHTML = joinArray;
+                palin(s, joinArray);
+            }
+
+            function palin(s, re) {
+                if (s == re) {
+                    document.getElementById("palindrome").innerHTML = "Is Palindrome";
+                } else {
+                    document.getElementById("palindrome").innerHTML = "Is Not Palindrome";
+                }
+            }
+
+            function replace() {
+                var s = document.getElementById("input").value;
+                var i = parseInt(document.getElementById("change_index").value);
+                var c = document.getElementById("change_char").value;
+
+                if (i >= 0 && i < s.length) {
+                    var r = s.substring(0, i) + c + s.substring(i + 1);
+                    document.getElementById("updated_string").innerHTML = r;
+                    document.getElementById("error").innerHTML = "";
+                } else {
+                    document.getElementById("error").innerHTML = "Error: Invalid Index";
+                    document.getElementById("updated_string").innerHTML = "";
+                }
+            }
+        </script>
+    </div>
+</body>
+
+</html>

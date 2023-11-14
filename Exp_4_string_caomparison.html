@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Comparison</title>
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>JavaScript program to compare two strings using various methods.</h2> <br>
+        <hr>
+        <h2>Name: Sahil Sehgal<br>Roll No: 42355</h2>
+        <hr>
+    </div>
+
+    <h1>String Comparison</h1>
+    <label for="string1">String 1:</label>
+    <input type="text" id="string1" placeholder="Enter first string">
+    <br/>
+    <label for="string2">String 2:</label>
+    <input type="text" id="string2" placeholder="Enter second string">
+    <br/>
+    <button id="compareButton">Compare</button>
+    <p id="result"></p>
+
+    <h3>Using user defined Method</h3>
+    Enter First String : <input type="text" id="str51"><br><br>
+    Enter Second String : <input type="text" id="str52"><br><br>
+    <button onclick="compUsingUser()">Compare (Using user method)</button><br><br>
+    <p id="output5"></p>
+
+    <script>
+        document.getElementById("compareButton").addEventListener("click", function() {
+            var string1 = document.getElementById("string1").value;
+            var string2 = document.getElementById("string2").value;
+            var result = document.getElementById("result");
+
+            var localeCompareResult = string1.localeCompare(string2) === 0;
+            var strictEqualityResult = string1 === string2;
+            var regexResult = new RegExp(string1).test(string2);
+            var lengthComparisonResult = string1.length === string2.length;
+            var lowercaseComparisonResult = string1.toLowerCase() === string2.toLowerCase();
+            var startsWithComparison = string1.startsWith(string2);
+            var endsWithComparison = string1.endsWith(string2);
+            var includesComparison = string1.includes(string2);
+            var indexOfComparison = string1.indexOf(string2) !== -1;
+
+            result.innerHTML = "Comparison using localeCompare: " + localeCompareResult + "<br>" +
+                              "Comparison using strict equality (===): " + strictEqualityResult + "<br>" +
+                              "Comparison using regex: " + regexResult + "<br>" +
+                              "Comparison based on length: " + lengthComparisonResult + "<br>" +
+                              "Comparison after converting to lowercase: " + lowercaseComparisonResult + "<br>" +
+                              "Comparison based on startsWith: " + startsWithComparison + "<br>" +
+                              "Comparison based on endsWith: " + endsWithComparison + "<br>" +
+                              "Comparison based on includes: " + includesComparison + "<br>" +
+                              "Comparison based on indexOf: " + indexOfComparison;
+        });
+
+        function compUsingUser() {
+            var input51 = document.getElementById("str51").value;
+            var input52 = document.getElementById("str52").value;
+            var output5;
+            var areEqual = true;
+
+            if (input51.length !== input52.length) {
+                areEqual = false;
+            } else {
+                for (var i = 0; i < input51.length; i++) {
+                    if (input51[i] !== input52[i]) {
+                        areEqual = false;
+                        break;
+                    }
+                }
+            }
+            if (areEqual) {
+                output5 = "Both Strings Are Equal";
+            } else {
+                output5 = "Both Strings Are Unequal";
+            }
+            document.getElementById("output5").innerHTML = output5;
+        }
+    </script>
+</body>
+
+</html>

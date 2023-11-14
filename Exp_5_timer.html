@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exp_5</title>
+    <div style="text-align:center">
+        <h2>Write a JavaScript program that will create a countdown timer.
+        
+        </h2> <br>
+        
+  <hr>
+     
+        <h2>Name:Sahil Sehgal
+            <br>Roll No:42355</h2>
+            <hr>
+
+
+</head>
+
+<body>
+   
+    <center>
+       
+        Enter Day (DD): <input type="int" id="day"></inputtype>
+        <br> <br>
+        Enter Month (MM) : <input type="int" id="month"></inputtype>
+        <br> <br>
+        Enter Year (YYYY): <input type="int" id="year"></inputtype>
+        <br> <br>
+        Enter Time (HH:MM:SS) : <input type="str" id="time"></inputtype>
+        <br> <br>
+        <button onclick="countdown()">Time Left</button>
+        <hr>
+        <p id="output"></p>
+        <hr>
+    </center>
+    <script>
+        function countdown() {
+            var day = document.getElementById("day").value;
+            var month = document.getElementById("month").value;
+            var year = document.getElementById("year").value;
+            var time = document.getElementById("time").value;
+            const timeBlock = time.split(":");
+            var x = setInterval(function () {
+                var currentDate = new Date().getTime();
+                var countDownDate = new Date(year, month - 1, day, timeBlock[0], timeBlock[1], timeBlock[2]).getTime();
+                var timeLeft = countDownDate - currentDate;
+                var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+        
+                document.getElementById("output").innerHTML = "Time Left : " + days + " Days " + hours + " Hours  " + minutes + " Minutes " + seconds + " Seconds ";
+        
+                if (timeLeft <= 0) {
+                    clearInterval(x);
+                    document.getElementById("output").innerHTML = "Countdown Timer Expired";
+                }
+            }
+                , 500);
+        }
+    </script>
+</body>
+
+</html>
