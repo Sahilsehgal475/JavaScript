@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exp_7</title>
+</head>
+<body style="text-align: center; background-color: azure;">
+    <h1>Sahil Sehgal <br> 42355</h1>
+    
+    <h3>Class: BE 7</h3>
+  
+    <hr>
+    <h1>Append Objects, Print Array, and Check Element at Index</h1>
+
+    <label for="arraySize">
+        Enter the size of the array:</label>
+    <input type="number" id="arraySize">
+    <button onclick="createArray()">Create Array</button>
+
+    <p>
+        Enter element:
+        <input type="text" id="element">
+        <button onclick="appendElement()">Append Element</button>
+    </p>
+    <p>
+        <button onclick="printArray()">Print Array</button>
+    </p>
+    <label for="indexToCheck">Enter index to check:</label>
+    <input type="number" id="indexToCheck">
+    <button onclick="checkElementAtIndex()">Check Element at Index</button>
+    <p id="ans"></p>
+    <p id="arrayContent"></p>
+
+    <script>
+        var dynamicArray = [];
+        var arraySizeSet = false;
+
+        function createArray() {
+            var size = parseInt(document.getElementById("arraySize").value);
+            if (!isNaN(size) && size > 0) {
+                dynamicArray = new Array(size);
+                arraySizeSet = true;
+                document.getElementById("ans").innerHTML = "Array created with a size of " + size;
+            } else {
+                document.getElementById("ans").innerHTML = "Please enter a valid positive integer as the array size.";
+            }
+        }
+
+        function appendElement() {
+            if (arraySizeSet) {
+                var element = document.getElementById("element").value;
+                if (dynamicArray.includes(undefined)) {
+                    for (var i = 0; i < dynamicArray.length; i++) {
+                        if (dynamicArray[i] === undefined) {
+                            dynamicArray[i] = element;
+                            document.getElementById("ans").innerHTML = "Element '" + element + "' appended at index " + i;
+                            break;
+                        }
+                    }
+                } else {
+                    document.getElementById("ans").innerHTML = "Array is full. Cannot append more elements.";
+                }
+            } else {
+                document.getElementById("ans").innerHTML = "Please create an array first.";
+            }
+        }
+
+        function printArray() {
+            if (arraySizeSet) {
+                document.getElementById("arrayContent").innerHTML = "Array Content: " + JSON.stringify(dynamicArray);
+            } else {
+                document.getElementById("arrayContent").innerHTML = "Please create an array first.";
+            }
+        }
+
+        function checkElementAtIndex() {
+            var index = parseInt(document.getElementById("indexToCheck").value);
+            if (index >= 0 && index < dynamicArray.length) {
+                var element = dynamicArray[index];
+                var parsedElement = JSON.parse(element); // Try to parse the element as JSON
+                var isElementAnArray = Array.isArray(parsedElement);
+                // var isElementAnArray = Array.isArray(element);
+                document.getElementById("ans").innerHTML = "Element at index " + index + ": " + JSON.stringify(element) + "<br>Is it an Array? " + isElementAnArray;
+            } else {
+                document.getElementById("ans").innerHTML = "Invalid index. Please enter a valid index within the array's bounds.";
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
