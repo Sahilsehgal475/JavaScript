@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area Calculator</title>
+</head>
+<body>
+    <body style="text-align:center; background-color:aquamarine">
+        <h2>Area of Different shapes</h1>
+            <hr>
+            
+            <br />
+           <h3 style="color: blue;">Reactangular Area Calculator</h3>
+           Length = <input type="number" id="Length"/>
+           <br/>
+           Breadth = <input type="number" id="Breadth"/>
+           <br/>
+           <button onclick="rectangle()">Calculate</button>
+           <br/>
+           Area=<h4 id="Area_Rectangle"></h4>
+           <br/>
+           <h3 style="color: blue;">Circle Area Calculator</h3>
+           radius = <input type="number" id="radius"/>
+           <br/>
+           <button onclick="Circle()">Calculate</button>
+           <br/>
+           Area=<h4 id="Area_Circle"></h4>
+           <br/>
+           <h3 style="color: blue;">Triangle Area Calculator</h3>
+           Side A = <input type="number" id="side a">
+           <br/>
+           Side B = <input type="number" id="side b">
+           <br/>
+           Side C = <input type="number" id="side c">
+           <br/>
+           <button onclick="triangle()">Calculate</button>
+           <br/>
+           Area=<h4 id="Area_Triangle"></h4>
+           <br/>
+           <script>
+              function rectangle(){
+                var len = parseInt(document.getElementById("Length").value);
+                var bre = parseInt(document.getElementById("Breadth").value);
+                if(len<0 || bre<0){
+                    alert("Value cannot be negative");
+                }
+                else{
+                    document.getElementById("Area_Rectangle").innerHTML= len*bre;
+                }
+
+                
+              }
+              function Circle(){
+                var rad=parseInt(document.getElementById("radius").value);
+                if(rad<0){
+                    alert("Value cannot be negative")
+                }
+                else{
+                    document.getElementById("Area_Circle").innerHTML =Math.PI*rad*rad;
+                }
+              }
+              function triangle(){
+                var a = parseInt(document.getElementById("side a").value);
+                var b= parseInt(document.getElementById("side b").value);
+                var c = parseInt(document.getElementById("side c").value);
+                if(a<0||b<0||c<0){
+                    alert("Values cannot be negative");
+                }
+                else if (a+b<=c||a+c<=b|| c+b<=a){
+                    alert("Invalid Sides");
+                }
+                else{
+                    const s = (a + b + c) / 2;
+                    document.getElementById("Area_Triangle").innerHTML = Math.sqrt(s * (s - a) * (s - b) * (s - c)).toFixed(2);
+
+                }
+             
+              }
+           </script>
+</body>
+</html>
