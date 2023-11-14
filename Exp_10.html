@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <title>Table Printer</title>
+</head>
+<body>
+  <body style="text-align: center;">
+    <h2>Sahil Sehgal</h2>
+    <h3>Roll No.: 42355</h3>
+  <h1>Table Printer</h1>
+
+  <input type="number" id="numberInput" placeholder="Enter a number">
+  <button onclick="printTable()">Print Table</button>
+  <br><br>
+  <div id="tableOutput"></div>
+
+  <script>
+    function printTable() {
+      var number = parseInt(document.getElementById('numberInput').value);
+      var tableOutput = document.getElementById('tableOutput');
+      tableOutput.innerHTML = '';  // Clear previous content
+
+      for (var i = 1; i <= 10; i++) {
+        var result = number * i;
+        var row = document.createElement('p');
+        row.textContent = `${number} x ${i} = ${result}`;
+        tableOutput.appendChild(row);
+      }
+    }
+  </script>
+</body>
+</html>
